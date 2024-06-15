@@ -52,7 +52,7 @@ const Form = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl mb-4">Product Form</h1>
+      <h1 className="text-2xl mb-4">Inventory Form</h1>
       <div className="mb-4">
         <label className="block">Size</label>
         <select
