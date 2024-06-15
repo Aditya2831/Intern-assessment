@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 
 const sizesList = ['Extra Small', 'Small', 'Medium', 'Large', 'Extra Large'];
 
+const colorsList = [
+  { name: 'Red', color: '#FF0000' },
+  { name: 'Green', color: '#00FF00' },
+  { name: 'Blue', color: '#0000FF' },
+  { name: 'Yellow', color: '#FFFF00' },
+  { name: 'Black', color: '#000000' },
+  { name: 'White', color: '#FFFFFF' },
+];
+
 const Form = () => {
   const [productsData, setProductsData] = useState([]);
   const [newSizeData, setNewSizeData] = useState('');
@@ -9,7 +18,7 @@ const Form = () => {
   const [newPriceData, setNewPriceData] = useState('');
   const [newInventoryData, setNewInventoryData] = useState('');
   const [sizeOptionsData, setSizeOptionsData] = useState(sizesList);
-  const [colorOptionsData, setColorOptionsData] = useState([]);
+  const [colorOptionsData, setColorOptionsData] = useState(colorsList);
   const [groupByData, setGroupByData] = useState('size');
 
   const addProductData = () => {
@@ -28,7 +37,7 @@ const Form = () => {
   };
 
   const addColorOptionData = () => {
-    setColorOptionsData([...colorOptionsData, newColorData]);
+    setColorOptionsData([...colorOptionsData, { name: newColorData, color: newColorData }]);
     setNewColorData('');
   };
 
@@ -71,6 +80,17 @@ const Form = () => {
 
       <div className="mb-4">
         <label className="block">Color</label>
+        <select
+          value={newColorData}
+          onChange={(e) => setNewColorData(e.target.value)}
+          className="border p-2 mb-2"
+        >
+          {colorOptionsData.map((color, idx) => (
+            <option key={idx} value={color.name} style={{ backgroundColor: color.color, color: color.name === 'Black' ? '#FFFFFF' : '#000000' }}>
+              {color.name}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           value={newColorData}
