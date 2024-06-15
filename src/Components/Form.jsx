@@ -123,7 +123,7 @@ const Form = () => {
         />
       </div>
 
-      <button onClick={addProductData} className="bg-green-500 text-white p-2">
+      <button onClick={addProductData} className="bg-green-600 text-white p-2 border-l-emerald-700">
         Add Product
       </button>
 
